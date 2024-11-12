@@ -188,3 +188,12 @@ body {
     font-size: 15px;
     font-weight: 500;
 }
+.project a{
+    color: var(--color);
+}
+@media screen {
+    #from{
+        width:auto;
+        height: auto;
+    } 
+}

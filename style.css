@@ -81,7 +81,7 @@ body {
 }
 #TryHackMe{
     padding: 1%;
-    width: 300px;
+    width: auto;
     height: auto;
 }
 /* for name and course */

@@ -2,10 +2,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Theme switcher
     const themeIcon = document.getElementById('theme-icon');
     const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     // Set initial theme based on system preference
     if (prefersDarkScheme.matches) {
         document.body.classList.remove('light-theme');
+        updateThemeIcon(false);
     } else {
         document.body.classList.add('light-theme');
         updateThemeIcon(true);
@@ -18,8 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateThemeIcon(isLight) {
         themeIcon.src = isLight 
-            ? 'https://api.iconify.design/lucide:moon.svg'
-            : 'https://api.iconify.design/lucide:sun.svg';
+            ? 'https://api.iconify.design/lucide:moon.svg' // Moon icon for light theme
+            : 'https://api.iconify.design/lucide:sun.svg'; // Sun icon for dark theme
     }
 
     // Smooth scroll for navigation

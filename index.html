@@ -3,168 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrijesh Pokharel</title>
+    <title>Shrijesh Pokharel | Portfolio</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/s.ico" href="image/s.ico"
-    <script src="script.js"></script>
 </head>
 <body>
-    <!-- for the dark mode -->
-    <div class="nav">
-        <nav>
-            <ul></ul>
-            <img src="image\sun.png" id="icon">
-        </nav>
+    <div class="theme-switch">
+        <img src="/image/Shrijesh.png" id="theme-icon" alt="Theme Toggle">
     </div>
-<div class="container"><!--start of container-->
-    <!-- detail about me -->
-    <div class="name">
-            <img src="image\Shrijesh.png">
-        <h1>Shrijesh Pokharel</h1>
-        <h2>Ethical Hacker & Web Developer</h2>
-        <h3>Building website and also persuiing my study in <br>Cyber Security and Ethical Hacking </h3>
-        <img src="https://tryhackme-badges.s3.amazonaws.com/shrijesh.png" alt="Your Image Badge" id="TryHackMe" />
 
-    </div>
-    <div class="footer">
-        Social Media Handles:<br>
-        <a href="https://github.com/Shrijesh-Pokharel" target="_blank">
-            <img src="image/github.png" id="link">
-        </a>
-        <a href="https://www.facebook.com/shrijesh.pokharel.01" target="_blank">
-            <img src="image/facebook.png" id="link">
-        </a> 
-        <a href="https://www.linkedin.com/in/shrijesh-ethical-hacker/" target="_blank">
-            <img src="image/linkedin.png" id="link">
-        </a>
-        <a href="https://www.instagram.com/root_shrijesh/" target="_blank">
-            <img src="image/instagram.png" id="link">
-        </a>
-        <a href="https://tryhackme.com/p/shrijesh" target="_blank">
-            <img src="image/thm.png" id="link">
-        </a>
-    </div>
-</div><!--this is the end of container-->
-<div class="detail">
-    <div class="about">
-        <p>About Me</p>
-        <per>
-            <!-- remaining to edit in this sector -->
-        I am a student of Softwarica college under Coventry University currently presuing my carrer in "BSc (hons).Cyber Security and Ethical Hacking".
-        I am also a web developer and have started to develop webpages from 2021 A.D. With the good knowledge of HTML, CSS JS and PHP in web scripting
-        and C language and python in programming I have build some projects too.
-        <br>
-        Back in 2021.AD I first started my webpages development by registering domain name and hosting in it through cloudflare. Aside from webpage development
-        I have also done some of my projects in different language like <i>"python, c-language,javascript and web scripting"</i>. 
-        <br>
-        My main focus these days is to learn new things like react, java etc. Even though I am currently studying as a 1<sup>st</sup> year student I am looking to 
-        gain experience by working in different projects and gain knowledge in different computer science fields.
-        </per>
-    </div>
-    <div class="skills">
-        <p>Skills</p>
-        <div class="skill-img">
-            <a href="https://web.html.support/" target="_blank">
-                <img src="image/html.png" id="link">
-            </a>
+    <main class="container">
+        <section class="hero">
+            <div class="profile">
+                <img src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=400&h=400&fit=crop" alt="Profile" class="profile-img">
+                <h1 class="name">Shrijesh Pokharel</h1>
+                <h2 class="title">Ethical Hacker & Web Developer</h2>
+                <p class="bio">Building websites and pursuing studies in Cyber Security and Ethical Hacking</p>
+                <div class="social-links">
+                    <a href="https://github.com/Shrijesh-Pokharel" target="_blank" class="social-icon">
+                        <img src="https://api.iconify.design/lucide:github.svg" alt="GitHub">
+                    </a>
+                    <a href="https://www.linkedin.com/in/shrijesh-ethical-hacker/" target="_blank" class="social-icon">
+                        <img src="https://api.iconify.design/lucide:linkedin.svg" alt="LinkedIn">
+                    </a>
+                    <a href="https://www.instagram.com/root_shrijesh/" target="_blank" class="social-icon">
+                        <img src="https://api.iconify.design/lucide:instagram.svg" alt="Instagram">
+                    </a>
+                    <a href="https://www.facebook.com/shrijesh.pokharel.01" target="_blank" class="social-icon">
+                        <img src="https://api.iconify.design/lucide:facebook.svg" alt="Facebook">
+                    </a>
+                </div>
+            </div>
+        </section>
 
-            <a href="https://www.w3schools.com/css/" target="_blank">
-                <img src="image/css.png" id="link">
-            </a>
+        <section class="about" id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="content">
+                <p>I am a student at Softwarica College under Coventry University, pursuing BSc (Hons) in Cyber Security and Ethical Hacking. As a web developer since 2021, I've built numerous projects using HTML, CSS, JavaScript, and PHP.</p>
+                <p>My journey in web development began with domain registration and Cloudflare hosting. I've since expanded my skills to include Python and C programming, working on various projects across different domains.</p>
+                <p>Currently, I'm focused on learning new technologies like React and Java while seeking opportunities to gain practical experience through diverse projects in computer science.</p>
+            </div>
+        </section>
 
-            <a href="https://www.w3schools.com/js/" target="_blank">
-                <img src="image/js.png" id="link">
-            </a>
+        <section class="skills" id="skills">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-categories">
+                <div class="skills-category">
+                    <h3>Web Development</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-html.svg" alt="HTML">
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-css.svg" alt="CSS">
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-js.svg" alt="JavaScript">
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-php.svg" alt="PHP">
+                            <span>PHP</span>
+                        </div>
+                    </div>
+                </div>
 
-            <a href="https://www.python.org/" target="_blank">
-                <img src="image/python.png" id="link">
-            </a>
-            
-            <a href="https://www.linux.org/" target="_blank">
-                <img src="image/linux.png" id="link">
-            </a>
-            
-            <a href="https://www.blender.org/" target="_blank">
-                <img src="image/blender.png" id="link">
-            </a>
-            
-            <a href="https://www.adobe.com/products/photoshop.html" target="_blank">
-                <img src="image/ps.png" id="link">
-            </a>
-            
-            <a href="https://www.mysql.com/" target="_blank">
-                <img src="image/mysql.png" id="link">
-            </a>
-            
-            <a href="https://www.php.net/" target="_blank">
-                <img src="image/php.png" id="link">
-            </a>
-        </div>
-    </div>
-    
-    <div class="project">
-        <p>My Projects</p><hr>
-        <div class="project-1">
-            <span>2021 A.D-Present</span><h3>Cryptography in C</h3>
-                <a href="https://github.com/Shrijesh-Pokharel/cryptography" target="_blank">Cryptography</a>
-                <p>This project was build to secure a file using encryption and can only be readable from this decryption code </p>
-            <span class="tag">c-language</span>
-        </div><!--end of project1--><br>
+                <div class="skills-category">
+                    <h3>Programming Languages</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-python.svg" alt="Python">
+                            <span>Python</span>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-c.svg" alt="C">
+                            <span>C</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="project-1">
-            <span>2021 A.D-Present</span><h3>Port Scanner</h3>
-                <a href="https://github.com/Shrijesh-Pokharel/port-scanner" target="_blank">port scanner</a>
-                <p>This project was build to scan the port of a computer using python to scan all the ports available in given IP address</p>
-                <span class="tag">python</span>
-        </div><!--end of project2--><br>
+                <div class="skills-category">
+                    <h3>Database & Systems</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-mysql.svg" alt="MySQL">
+                            <span>MySQL</span>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-linux.svg" alt="Linux">
+                            <span>Linux</span>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="project-1">
-            <span>2021 A.D-Present</span><h3>Cryptography in Linux</h3>
-                <a href="https://github.com/Shrijesh-Pokharel/cryptography-in-linux" target="_blank">Cryptography in Linux</a>
-                <p>This project was build to secure a file using encryption and can only be readable from this code using linux</p>
-                <span class="tag">Linux</span>
-                <span class="tag">kali-linux</span>
-        </div><!--end of project3--><br>
+                <div class="skills-category">
+                    <h3>Design Tools</h3>
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-photoshop.svg" alt="Photoshop">
+                            <span>Photoshop</span>
+                        </div>
+                        <div class="skill-card">
+                            <img src="https://api.iconify.design/vscode-icons:file-type-blender.svg" alt="Blender">
+                            <span>Blender</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        <div class="project-1">
-            <span>2021 A.D-Present</span><h3>Student Management System</h3>
-                <a href="https://github.com/Shrijesh-Pokharel/Student-Management-System" target="_blank">Student Management System</a>
-                <p>This project was build to manage the student data using php, css and javascript for frontend and mysql for database</p>
-                <span class="tag">php</span>
-                <span class="tag">mysql</span>
-                <span class="tag">css</span>
-                <span class="tag">javascript</span>
-        </div><!--end of project4--><br>
+        <section class="projects" id="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <h3>Cryptography in C</h3>
+                    <p class="project-period">2021-Present</p>
+                    <p class="project-description">A secure file encryption system that ensures data privacy through robust cryptographic algorithms.</p>
+                    <div class="project-tags">
+                        <span class="tag">C</span>
+                        <span class="tag">Cryptography</span>
+                        <span class="tag">Security</span>
+                    </div>
+                    <a href="https://github.com/Shrijesh-Pokharel/cryptography" class="project-link" target="_blank">View Project</a>
+                </article>
 
-        <div class="project-1">
-            <span>2021 A.D-Present</span><h3>Basic C language Projects</h3>
-                <a href="https://github.com/Shrijesh-Pokharel/C-language-projects">C language </a>
-                <p>This project was build to learn the basic of c language and to practice it by doing small projects</p>
-                <span class="tag">c-language</span>
-        </div><!--end of project5--><br>
-        <div class="project-1">
-            <span>2021 A.D-Present</span><h3>Basic Python Project</h3>
-            <a href="https://github.com/Shrijesh-Pokharel/Python-project">Python Project</a>
-            <p>This project was build to learn the basic of python and to practice it by doing small project</p>
-            <span class="tag">python</span>
-        </div><!--end of project6-->
-        <hr>
-    </div><!--end of projects div-->
+                <article class="project-card">
+                    <h3>Port Scanner</h3>
+                    <p class="project-period">2021-Present</p>
+                    <p class="project-description">Python-based network security tool for scanning and analyzing open ports on target systems.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Network Security</span>
+                    </div>
+                    <a href="https://github.com/Shrijesh-Pokharel/port-scanner" class="project-link" target="_blank">View Project</a>
+                </article>
 
+                <article class="project-card">
+                    <h3>Cryptography in Linux</h3>
+                    <p class="project-period">2021-Present</p>
+                    <p class="project-description">Linux-based file encryption and security system implementing advanced cryptographic techniques.</p>
+                    <div class="project-tags">
+                        <span class="tag">Linux</span>
+                        <span class="tag">Cryptography</span>
+                        <span class="tag">Bash</span>
+                    </div>
+                    <a href="https://github.com/Shrijesh-Pokharel/cryptography-in-linux" class="project-link" target="_blank">View Project</a>
+                </article>
 
-</div><!--end of details-->
-<br>
+                <article class="project-card">
+                    <h3>Student Management System</h3>
+                    <p class="project-period">2021-Present</p>
+                    <p class="project-description">Comprehensive system for managing student data using PHP, MySQL, and modern web technologies.</p>
+                    <div class="project-tags">
+                        <span class="tag">PHP</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">CSS</span>
+                    </div>
+                    <a href="https://github.com/Shrijesh-Pokharel/Student-Management-System" class="project-link" target="_blank">View Project</a>
+                </article>
+
+                <article class="project-card">
+                    <h3>Basic C Language Projects</h3>
+                    <p class="project-period">2021-Present</p>
+                    <p class="project-description">Collection of fundamental C programming projects demonstrating core concepts and algorithms.</p>
+                    <div class="project-tags">
+                        <span class="tag">C</span>
+                        <span class="tag">Algorithms</span>
+                        <span class="tag">Data Structures</span>
+                    </div>
+                    <a href="https://github.com/Shrijesh-Pokharel/C-language-projects" class="project-link" target="_blank">View Project</a>
+                </article>
+
+                <article class="project-card">
+                    <h3>Basic Python Projects</h3>
+                    <p class="project-period">2021-Present</p>
+                    <p class="project-description">Series of Python projects exploring various programming concepts and practical applications.</p>
+                    <div class="project-tags">
+                        <span class="tag">Python</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">Scripting</span>
+                    </div>
+                    <a href="https://github.com/Shrijesh-Pokharel/Python-project" class="project-link" target="_blank">View Project</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
 </body>
-<script>
-    var icon = document.getElementById ("icon");
-icon.onclick = function(){
-    document.body.classList.toggle ("dark-theme");
-    if(document.body.classList.contains("dark-theme")){
-        icon.src= "image/moon.png";
-    }
-    else{
-        icon.src= "image/sun.png";
-    }
-}
-</script>
 </html>

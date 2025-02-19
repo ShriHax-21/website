@@ -106,6 +106,14 @@ body {
     margin-top: 2rem;
 }
 
+.badge-container {
+    gap: 1rem;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    margin-top: 1rem;
+}
+
 .social-links {
     display: flex;
     gap: 1rem;

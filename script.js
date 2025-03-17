@@ -71,9 +71,18 @@ document.head.insertAdjacentHTML('beforeend', `
     </style>
 `);
     // Menu Toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('active');
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleButton = document.getElementById("nav-toggle");
+        const navMenu = document.getElementById("nav-menu");
+        const navLinks = document.querySelectorAll(".nav-link");
+        
+        toggleButton.addEventListener("click", function() {
+            navMenu.classList.toggle("active");
+        });
+        
+        navLinks.forEach(link => {
+            link.addEventListener("click", function() {
+                navMenu.classList.remove("active");
+            });
+        });
     });

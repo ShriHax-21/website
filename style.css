@@ -244,7 +244,7 @@ section {
     background-color: var(--accent-primary);
     box-shadow: 0 0 10px var(--accent-primary);
     width: 0%;
-    transition: width 0.2s ease;
+    transition: width 0.1s ease;
 }
 
 .loading-text {
@@ -699,11 +699,11 @@ section {
 }
 
 .badge-container {
-    margin-bottom: var(--spacing-lg);
-    border: 1px solid var(--border-color);
-    display: inline-block;
-    overflow: hidden;
-    border-radius: var(--radius-md);
+    gap: 1rem;
+    justify-content: center;
+    margin: auto;
+    display: flex;
+    margin-top: 1rem;
 }
 
 .cta-buttons {

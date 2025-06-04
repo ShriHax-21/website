@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Highlight active navigation links on scroll
         highlightNavOnScroll();
-    }, 3000); // Wait for loading screen
+    },100); // Wait for loading screen
 });
 
 /**
@@ -86,12 +86,12 @@ function initLoadingScreen() {
                 setTimeout(() => {
                     loadingScreen.classList.add('hidden');
                     document.body.classList.add('loaded');
-                }, 500);
-            }, 500);
+                }, 5);
+            }, 5);
         }
 
         // Generate "hacker-like" random characters occasionally
-        if (Math.random() > 0.7) {
+        if (Math.random() > 0.5) {
             const hackerChars = "!@#$%^&*()_+-={}[]|\\:;\"'<>,.?/";
             statusText.textContent = loadingTexts[Math.floor(progress / 100 * loadingTexts.length)] +
                 " " + hackerChars.charAt(Math.floor(Math.random() * hackerChars.length));
@@ -101,7 +101,7 @@ function initLoadingScreen() {
 
         progressBar.style.width = `${progress}%`;
         percentText.textContent = `${Math.floor(progress)}%`;
-    }, 50);
+    }, 10);
 }
 
 /**
@@ -203,12 +203,6 @@ function setupNavigation() {
         });
     });
 
-    // Add hover sound effect
-    navLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            playHoverSound(0.05);
-        });
-    });
 }
 
 /**
@@ -269,34 +263,6 @@ function typewriterEffect(element, texts, typingSpeed, pauseTime) {
 }
 
 /**
- * Play a subtle hover sound effect
- */
-function playHoverSound(volume = 0.1) {
-    // Create audio context if not exists to prevent autoplay policy restrictions
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
-    if (!window.audioCtx) {
-        window.audioCtx = new AudioContext();
-    }
-
-    // Create oscillator for a digital sound effect
-    const oscillator = window.audioCtx.createOscillator();
-    const gainNode = window.audioCtx.createGain();
-
-    oscillator.type = 'sine';
-    oscillator.frequency.setValueAtTime(2000, window.audioCtx.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(500, window.audioCtx.currentTime + 0.1);
-
-    gainNode.gain.setValueAtTime(volume, window.audioCtx.currentTime);
-    gainNode.gain.exponentialRampToValueAtTime(0.01, window.audioCtx.currentTime + 0.1);
-
-    oscillator.connect(gainNode);
-    gainNode.connect(window.audioCtx.destination);
-
-    oscillator.start();
-    oscillator.stop(window.audioCtx.currentTime + 0.1);
-}
-
-/**
  * Apply glitch effect to an element
  */
 function applyGlitchEffect(element) {
@@ -319,9 +285,6 @@ function setupSkillTabs() {
     tabButtons.forEach(button => {
         button.addEventListener('click', () => {
             const tabId = button.getAttribute('data-tab');
-
-            // Play click sound
-            playHoverSound(0.1);
 
             // Update active button
             tabButtons.forEach(btn => {
@@ -353,9 +316,6 @@ function setupProjectFilters() {
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const filterValue = button.getAttribute('data-filter');
-
-            // Play click sound
-            playHoverSound(0.1);
 
             // Update active button
             filterButtons.forEach(btn => {
@@ -586,13 +546,6 @@ function setupBackToTopButton() {
             backToTop.classList.remove('show');
         }
     });
-
-    // Add click sound to back to top button
-    if (backToTop) {
-        backToTop.addEventListener('click', (e) => {
-            playHoverSound(0.1);
-        });
-    }
 }
 
 /**
@@ -640,33 +593,6 @@ function setupCounters() {
     });
 }
 
-/**
- * Setup interactive elements with hover effects and sounds
- */
-function setupInteractiveElements() {
-    // Add hover effects to project cards
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mouseenter', () => {
-            playHoverSound(0.03);
-        });
-    });
-
-    // Add hover effects to buttons
-    document.querySelectorAll('.btn').forEach(btn => {
-        btn.addEventListener('mouseenter', () => {
-            playHoverSound(0.05);
-        });
-    });
-
-    // Add click effect to hexagon profile image
-    const profileImg = document.querySelector('.profile-img-container');
-    if (profileImg) {
-        profileImg.addEventListener('click', () => {
-            applyGlitchEffect(profileImg);
-            playHoverSound(0.15);
-        });
-    }
-}
 
 /**
  * Highlight active navigation link based on scroll position

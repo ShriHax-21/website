@@ -297,11 +297,19 @@ function setupSkillTabs() {
                 content.classList.remove('active');
             });
 
-            const activeTab = document.getElementById(tabId);
-            activeTab.classList.add('active');
-
-            // Add glitch effect when changing tabs
-            applyGlitchEffect(activeTab);
+            if (tabId === 'all') {
+                // Show all skill sections
+                tabContents.forEach(content => content.classList.add('active'));
+                const skillsContent = document.querySelector('.skills-content');
+                applyGlitchEffect(skillsContent);
+            } else {
+                const activeTab = document.getElementById(tabId);
+                if (activeTab) {
+                    activeTab.classList.add('active');
+                    // Add glitch effect when changing tabs
+                    applyGlitchEffect(activeTab);
+                }
+            }
         });
     });
 }

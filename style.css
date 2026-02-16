@@ -994,8 +994,30 @@ section {
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+}
+
+/* Add extra spacing under each tab block */
+.tab-content {
+    padding-bottom: var(--spacing-2xl);
+}
+
+.skill-card {
+    margin-bottom: var(--spacing-md);
+}
+
+/* Responsive fallbacks */
+@media (max-width: 1000px) {
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 520px) {
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .skill-card {

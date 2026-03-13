@@ -1,812 +1,659 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shrijesh Pokharel | Ethical Hacker & Cybersecurity Professional</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="image/black.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="image/ShriHax.ico" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShriHax — Ethical Hacker & Security Researcher</title>
+  <meta name="description" content="Shrijesh Pokharel — Ethical Hacker, Security Researcher, and Developer based in Kathmandu, Nepal." />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="apple-touch-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<div class="glitch-overlay"></div>
-<canvas class="matrix-rain" id="matrix-canvas"></canvas>
 
-<nav class="navbar">
-    <div class="nav-logo">
-        <span class="glitch" data-text="SP">ShriHax</span>
-        <div class="terminal-cursor"></div>
+  <div class="noise"></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" data-text="SHRIHAX">SHR<span class="accent">I</span>HAX</a>
+      <ul class="nav-links">
+        <li><a href="#about"    data-nav>about</a></li>
+        <li><a href="#skills"   data-nav>skills</a></li>
+        <li><a href="#projects" data-nav>projects</a></li>
+        <li><a href="#labs"     data-nav>labs</a></li>
+        <li><a href="#contact"  data-nav>contact</a></li>
+      </ul>
+      <a href="https://github.com/ShriHax-21" target="_blank" rel="noopener" class="nav-cta">
+        <span>GitHub</span>
+        <i data-lucide="arrow-up-right"></i>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-    <button id="nav-toggle" aria-label="Toggle navigation">
-        <i class="fas fa-terminal"></i>
-    </button>
-    <ul id="nav-menu">
-        <li><a href="#profile" class="nav-link">Home</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#skills" class="nav-link">Skills</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-</nav>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about">about</a>
+      <a href="#skills">skills</a>
+      <a href="#projects">projects</a>
+      <a href="#labs">labs</a>
+      <a href="#contact">contact</a>
+    </div>
+  </nav>
 
-<main class="container">
-    <section class="hero" id="profile">
-        <div class="hero-content">
-            <div class="profile" data-aos="fade-up">
-                <div class="profile-img-container">
-                    <div class="hexagon">
-                        <div class="hex-inner">
-                            <img src="image/Shrijesh.png" alt="Shrijesh Pokharel" class="profile-img">
-                        </div>
-                    </div>
-                    <div class="scan-line"></div>
-                </div>
-                <div class="profile-text">
-                    <div class="terminal-header">
-                        <span class="terminal-button"></span>
-                        <span class="terminal-button"></span>
-                        <span class="terminal-button"></span>
-                        <span class="terminal-title">user@shrijesh:~$</span>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="terminal-text">
-                            <h1 class="name cyber-glitch" data-text="Shrijesh Pokharel">Shrijesh Pokharel</h1>
-                            <h2 class="title typewriter"></h2>
-                            <p class="bio command-line">> Securing digital landscapes through ethical hacking and web development</p>
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-grid">
+      <div class="hero-left">
 
-                            <div class="badge-container">
-                                <iframe
-                                        src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=2088043"
-                                        style="height:92px; width:335px; border:none;"
-                                        title="TryHackMe Badge">
-                                </iframe>
-                            </div>
-
-                            <div class="cta-buttons">
-                                <a href="#contact" class="btn btn-primary">$ Contect</a>
-                                <a href="#projects" class="btn btn-secondary">$ View Projects</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="social-links" data-aos="fade-up" data-aos-delay="200">
-                <a href="https://github.com/ShriHax-21" target="_blank" class="social-icon" aria-label="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="https://www.linkedin.com/in/shrijesh-Pokharel/" target="_blank" class="social-icon" aria-label="LinkedIn">
-                    <i class="fab fa-linkedin-in"></i>
-                </a>
-                <a href="https://www.instagram.com/ssh_shrijesh/" target="_blank" class="social-icon" aria-label="Instagram">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://www.facebook.com/shrijesh.pokharel.01" target="_blank" class="social-icon" aria-label="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" class="social-icon" aria-label="TryHackMe">
-                    <img src="image/thm.png" alt="TryHackMe">
-                </a>
-            </div>
+        <div class="hero-badge" data-reveal>
+          <span class="badge-dot"></span>
+          <span class="mono">Available for employment &amp; collaborations</span>
         </div>
-        <div class="scroll-indicator">
-            <a href="#about" aria-label="Scroll down">
-                <i class="fas fa-chevron-down"></i>
+
+        <h1 class="hero-name" data-reveal>
+          Shrijesh<br/>
+          <span class="hero-name-alt">Pokharel</span>
+        </h1>
+
+        <div class="hero-role" data-reveal>
+          <span class="mono accent">&gt;</span>
+          <span id="roleText"></span>
+          <span class="blink">_</span>
+        </div>
+
+        <p class="hero-desc" data-reveal>
+          Security researcher. Ethical hacker. Tool builder. Pursuing BSc (Hons) Cyber Security &amp; Ethical Hacking at Coventry University via Softwarica College — Kathmandu, Nepal.
+        </p>
+
+        <div class="hero-actions" data-reveal>
+          <a href="#projects" class="btn-primary">
+            View Projects
+            <i data-lucide="arrow-up-right"></i>
+          </a>
+          <a href="#contact" class="btn-secondary">
+            <i data-lucide="mail"></i>
+            Contact Me
+          </a>
+        </div>
+
+        <div class="hero-stats" data-reveal>
+          <div class="stat">
+            <span class="stat-num accent">17+</span>
+            <span class="stat-label mono">Projects</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-num accent">20+</span>
+            <span class="stat-label mono">CTF Challenges</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-num accent">5+</span>
+            <span class="stat-label mono">Languages</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-right" data-reveal>
+        <div class="hero-img-wrap">
+          <div class="hero-img-glow"></div>
+          <img src="image/Shrijesh.png" alt="Shrijesh Pokharel" class="hero-img" loading="eager" />
+          <div class="hero-img-border"></div>
+          <div class="hero-scan"></div>
+        </div>
+        <div class="hero-terminal">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="terminal-body">
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">whoami</span></p>
+            <p class="t-out">shrijesh pokharel — ethical hacker</p>
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cat skills.txt</span></p>
+            <p class="t-out">pentest | malware-analysis | cryptography</p>
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">nmap -sV shrijesh.com.np</span></p>
+            <p class="t-out">PORT    STATE SERVICE  VERSION</p>
+            <p class="t-out">80/tcp  open  http     <span class="accent">ShriHax Portfolio</span></p>
+            <p class="t-out">443/tcp open  ssl/https <span class="accent">Secured ✓</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span class="mono">scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">01</span>
+        <span class="label-line"></span>
+        <span class="mono">about_me.txt</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-text" data-reveal>
+          <h2 class="section-title">Breaking things<br/><em>ethically</em> since 2021</h2>
+          <p>I'm an aspiring cybersecurity professional who lives at the intersection of offensive security and software development. I spend my time building tools, owning machines on HTB and TryHackMe, and diving deep into malware analysis and reverse engineering.</p>
+          <p>Currently pursuing my BSc (Hons) in Cyber Security &amp; Ethical Hacking at <strong>Coventry University</strong> through <strong>Softwarica College</strong> in Kathmandu. My academic work spans penetration testing, security auditing, reverse engineering, and security management — all backed by real lab engagements.</p>
+          <p>I build because I learn better that way. Every tool I write, every machine I root, every report I produce — it all stacks into a picture of someone who doesn't just study security, but does it.</p>
+          <div class="about-links">
+            <a href="https://linkedin.com/in/shrijesh-ethical-hacker" target="_blank" rel="noopener" class="about-link">
+              <i data-lucide="linkedin"></i> LinkedIn
             </a>
+            <a href="https://github.com/ShriHax-21" target="_blank" rel="noopener" class="about-link">
+              <i data-lucide="github"></i> GitHub
+            </a>
+            <a href="mailto:shrijesh@proton.me" class="about-link">
+              <i data-lucide="mail"></i> Email
+            </a>
+          </div>
         </div>
-    </section>
-
-    <section class="about" id="about" data-aos="fade-up">
-        <h2 class="section-title cyber-glitch" data-text="[01] About Me">[01] About Me</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <div class="console-container">
-                    <div class="console-header">
-                        <div class="console-buttons">
-                            <span class="console-button"></span>
-                            <span class="console-button"></span>
-                            <span class="console-button"></span>
-                        </div>
-                        <div class="console-title">user_profile.txt</div>
-                    </div>
-                    <div class="console-body">
-                        <p>
-                            <span class="console-prompt">></span> I'm Shrijesh Pokharel, an aspiring cybersecurity professional currently pursuing a BSc (Hons) in Cyber Security and Ethical Hacking at Coventry University through Softwarica College.
-                        </p>
-                        <p>
-                            <span class="console-prompt">></span> My passion lies in protecting digital landscapes and solving complex security challenges. I regularly tackle real-world scenarios on platforms like Hack The Box and TryHackMe, gaining hands-on experience in reconnaissance, vulnerability assessment, and exploitation techniques.
-                        </p>
-                        <p>
-                            <span class="console-prompt">></span> I develop innovative security tools and projects, including a Python-based port scanner with GUI and cryptography tools for secure file encryption. Driven by a commitment to continuous learning, I stay updated with the latest industry trends to create effective solutions for modern cybersecurity threats.
-                        </p>
-                        <p>
-                            <span class="console-prompt">></span> I enjoy collaborating with like-minded professionals to make a meaningful impact in the tech world. I'm actively seeking internships and opportunities in cybersecurity and ethical hacking. Let's connect and explore ways to make the digital world safer together!
-                        </p>
-                    </div>
-                </div>
+        <div class="about-img-col" data-reveal>
+          <div class="edu-card">
+            <div class="edu-icon">🎓</div>
+            <div>
+              <p class="edu-title">BSc (Hons) Cyber Security &amp; Ethical Hacking</p>
+              <p class="edu-sub mono">Coventry University × Softwarica College</p>
+              <p class="edu-loc mono accent">Kathmandu, Nepal</p>
             </div>
-            <div class="about-stats">
-                <div class="stat-item">
-                    <div class="stat-hexagon">
-                        <div class="stat-number counter">17+</div>
-                    </div>
-                    <div class="stat-label">Projects</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-hexagon">
-                        <div class="stat-number counter">5+</div>
-                    </div>
-                    <div class="stat-label">Programming Languages</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-hexagon">
-                        <div class="stat-number counter">20+</div>
-                    </div>
-                    <div class="stat-label">CTF Challenges</div>
-                </div>
-            </div>
+          </div>
         </div>
-    </section>
-
-    <section class="skills" id="skills" data-aos="fade-up">
-        <h2 class="section-title cyber-glitch" data-text="[02] Skills & Expertise">[02] Skills & Expertise</h2>
-        <div class="skills-tabs">
-            <button class="tab-button active" data-tab="all">All</button>
-            <button class="tab-button" data-tab="web-dev">Web Development</button>
-            <button class="tab-button" data-tab="programming">Programming</button>
-            <button class="tab-button" data-tab="security">Security</button>
-            <button class="tab-button" data-tab="systems">Systems</button>
-        </div>
-
-        <div class="skills-content">
-            <div class="tab-content active" id="web-dev">
-                <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-icon-container">
-                            <img src="image/html.png" alt="HTML">
-                        </div>
-                        <span>HTML</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-icon-container">
-                            <img src="image/css.png" alt="CSS">
-                        </div>
-                        <span>CSS</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="skill-icon-container">
-                            <img src="image/js.png" alt="JavaScript">
-                        </div>
-                        <span>JavaScript</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-icon-container">
-                            <img src="image/php.png" alt="PHP">
-                        </div>
-                        <span>PHP</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content active" id="programming">
-                <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-icon-container">
-                            <img src="image/python.png" alt="Python">
-                        </div>
-                        <span>Python</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-icon-container">
-                            <img src="https://api.iconify.design/vscode-icons:file-type-c.svg" alt="C">
-                        </div>
-                        <span>C</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="skill-icon-container">
-                            <img src="image/mysql.png" alt="MySQL">
-                        </div>
-                        <span>MySQL</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-icon-container">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <span>Bash Scripting</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content active" id="security">
-                <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-icon-container">
-                            <i class="fas fa-shield-alt"></i>
-                        </div>
-                        <span>Penetration Testing</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-icon-container">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <span>Cryptography</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="300">
-                        <div class="skill-icon-container">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <span>Vulnerability Assessment</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-icon-container">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <span>Network Security</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tab-content active" id="systems">
-                <div class="skills-grid">
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="100">
-                        <div class="skill-icon-container">
-                            <img src="image/linux.png" alt="Linux">
-                        </div>
-                        <span>Linux</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="200">
-                        <div class="skill-icon-container">
-                            <img src="image/windows.png" alt="Windows">
-                        </div>
-                        <span>Windows</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                    <div class="skill-card" data-aos="zoom-in" data-aos-delay="400">
-                        <div class="skill-icon-container">
-                            <i class="fas fa-code-branch"></i>
-                        </div>
-                        <span>Version Control</span>
-                        <div class="skill-level">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="projects" id="projects" data-aos="fade-up">
-        <h2 class="section-title cyber-glitch" data-text="[03] Featured Projects">[03] Featured Projects</h2>
-
-        <div class="project-filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="security">Security</button>
-            <button class="filter-btn" data-filter="web">Web</button>
-            <button class="filter-btn" data-filter="programming">Programming</button>
-            <button class="filter-btn" data-filter="Networking">Networking</button>
-            <button class="filter-btn" data-filter="Encryption">Encryption</button>
-            </div>
-
-        <div class="projects-grid">
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Cryptography in C</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Feb 2023</p>
-                        </div>
-                    </div>
-                    <p class="project-description">A secure file encryption system that ensures data privacy through robust cryptographic algorithms.</p>
-                    <div class="project-tags">
-                        <span class="tag">C</span>
-                        <span class="tag">Cryptography</span>
-                        <span class="tag">Security</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/cryptography" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-network-wired"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Port Scanner</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Feb 2023</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python-based network security tool for scanning and analyzing open ports on target systems.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Network Security</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/port-scanner" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fab fa-linux"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Cryptography in Linux</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Jul 2023</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Linux-based file encryption and security system implementing advanced cryptographic techniques.</p>
-                    <div class="project-tags">
-                        <span class="tag">Linux</span>
-                        <span class="tag">Cryptography</span>
-                        <span class="tag">Bash</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/cryptography-in-linux" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Student Management System</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Feb 2024</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Comprehensive system for managing student data using PHP, MySQL, and modern web technologies.</p>
-                    <div class="project-tags">
-                        <span class="tag">PHP</span>
-                        <span class="tag">MySQL</span>
-                        <span class="tag">JavaScript</span>
-                        <span class="tag">CSS</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/Student-Management-System" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="programming" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-code"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Basic C Language Projects</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Nov 2024</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Collection of fundamental C programming projects demonstrating core concepts and algorithms.</p>
-                    <div class="project-tags">
-                        <span class="tag">C</span>
-                        <span class="tag">Algorithms</span>
-                        <span class="tag">Data Structures</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/C-language-projects" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="programming" data-aos="fade-up" data-aos-delay="100">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Basic Python Projects</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Oct 2024</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Series of Python projects exploring various programming concepts and practical applications.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Automation</span>
-                        <span class="tag">Scripting</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/Python-project" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="200">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>NCPD</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Nov 2024</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Bash project to scan, password crack, python3 server and directory-scan.</p>
-                    <div class="project-tags">
-                        <span class="tag">Bash</span>
-                        <span class="tag">Scripting</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/NCPD" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="programming" data-aos="fade-up" data-aos-delay="300">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-image"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Image Downloader</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Nov 2024</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Bash project to download images from internet.</p>
-                    <div class="project-tags">
-                        <span class="tag">Bash</span>
-                        <span class="tag">Downloader</span>
-                        <span class="tag">Scripting</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/Image_downloader" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="400">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-desktop"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Port Scanner GUI</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Feb 2025</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python project to scan port in network with GUI</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Offensive Security</span>
-                        <span class="tag">Libraries</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/port_scanner_GUI" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="web security" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-spider"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Web Crawler GUI</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> Jan 2025</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python project to scan web in network with GUI</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Offensive Security</span>
-                        <span class="tag">Libraries</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/web_crawler_GUI" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="programming" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fa-solid fa-file-audio"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>YouTube-Downloader</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> June 2025</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python project to download youtube video as audio</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Basic Tool</span>
-                        <span class="tag">Libraries</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/YT-audio_downloader" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                           <i class="fa-solid fa-link-slash"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>URL Defanger</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> June 2025</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python project to defang the URL</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Basic Tool</span>
-                        <span class="tag">Libraries</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/URL-Defanger" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="security" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                           <i class="fa-solid fa-wifi"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>X_Change</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> June 2025</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Bash script to change IP & MAC address in linux env</p>
-                    <div class="project-tags">
-                        <span class="tag">Bash</span>
-                        <span class="tag">Basic Tool</span>
-                        <span class="tag">Spoofing</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/X_Change" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="web Networking" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                           <i class="fa-solid fa-wifi"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>NetToss-Wireless_File_Transfer</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> December 2025</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python base tool to easily transfer files over wireless networks</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Basic Tool</span>
-                        <span class="tag">Networking</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/NetToss-Wireless_File_Transfer" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="project-card" data-category="Encryption security" data-aos="fade-up" data-aos-delay="500">
-                <div class="project-card-inner">
-                    <div class="project-header">
-                        <div class="project-icon">
-                           <i class="fa-solid fa-wifi"></i>
-                        </div>
-                        <div class="project-meta">
-                            <h3>Cryptex-Rolling-file-vault</h3>
-                            <p class="project-period"><i class="far fa-calendar-alt"></i> January 2026</p>
-                        </div>
-                    </div>
-                    <p class="project-description">Python script to encrypt and securely store files in a rolling vault</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">Basic Tool</span>
-                        <span class="tag">Encryption</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/ShriHax-21/Cryptex-Rolling-file-vault" class="project-link" target="_blank">
-                            <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                    
-                </div>
-            </article>
-
-        </div>
-
-        <div class="view-more-container">
-            <a href="https://github.com/ShriHax-21" class="btn btn-primary" target="_blank">View All Projects on GitHub</a>
-        </div>
-    </section>
-
-    <section class="contact" id="contact" data-aos="fade-up">
-        <h2 class="section-title cyber-glitch" data-text="[04] Contect">[04] Contect</h2>
-
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <div>
-                        <h3>Email</h3>
-                        <a href="mailto:shrijeshpokharel@proton.me">shrijeshpokharel@proton.me</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <div>
-                        <h3>LinkedIn</h3>
-                        <a href="https://www.linkedin.com/in/shrijesh-ethical-hacker/" target="_blank">linkedin.com/in/shrijesh-ethical-hacker</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <div>
-                        <h3>GitHub</h3>
-                        <a href="https://github.com/ShriHax-21" target="_blank">github.com/ShriHax-21</a>
-                    </div>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <div>
-                        <h3>WhatsApp</h3>
-                        <a href="https://wa.me/+9779704456926" target="_blank">+977 9704456926</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<footer class="footer">
-    <div class="circuit-board"></div>
-    <div class="footer-content">
-        <div class="footer-logo">
-            <h3 class="cyber-glitch" data-text="Shrijesh Pokharel">Shrijesh Pokharel</h3>
-            <p>Ethical Hacker & Cybersecurity Professional</p>
-        </div>
-        <div class="footer-links">
-            <div class="footer-nav">
-                <h4>[Navigation]</h4>
-                <ul>
-                    <li><a href="#profile">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-social">
-                <h4>[Connect]</h4>
-                <div class="footer-social-icons">
-                    <a href="https://github.com/ShriHax-21" target="_blank" aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/shrijesh-Pokharel/" target="_blank" aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="https://www.instagram.com/ssh_shrijesh/" target="_blank" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://www.facebook.com/shrijesh.pokharel.01" target="_blank" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" aria-label="TryHackMe">
-                        <i class="fas fa-user-secret"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <p>&copy; 2025 Shrijesh Pokharel. All rights reserved.</p>
-        <p>Secured with <i class="fas fa-shield-alt"></i> by Shrijesh Pokharel</p>
-    </div>
-</footer>
+  </section>
 
-<div class="back-to-top">
-    <a href="#profile" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">02</span>
+        <span class="label-line"></span>
+        <span class="mono">skills_matrix.json</span>
+      </div>
+      <h2 class="section-title" data-reveal>Technical Arsenal</h2>
 
-<div class="loading-screen">
-    <div class="loader">
-        <div class="hacker-text">Initializing secure connection...</div>
-        <div class="progress-bar">
-            <div class="progress"></div>
+      <div class="skills-grid" data-reveal>
+
+        <div class="skill-domain">
+          <div class="skill-domain-header">
+            <span class="domain-icon">⚔️</span>
+            <h3 class="mono">Offensive Security</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Penetration Testing</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:65%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Vulnerability Assessment</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:70%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Malware Analysis</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Reverse Engineering</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:60%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Network Security</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+            </div>
+          </div>
         </div>
-        <div class="loading-text">
-            <span class="percent">0%</span>
-            <span class="status">Loading security protocols...</span>
-        </div>
-    </div>
-</div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script src="script.js"></script>
+        <div class="skill-domain">
+          <div class="skill-domain-header">
+            <span class="domain-icon">🔐</span>
+            <h3 class="mono">Cryptography &amp; Dev</h3>
+          </div>
+          <div class="skill-items">
+            <div class="skill-item">
+              <span class="skill-name">Python</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:68%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">C / C++</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:62%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Bash Scripting</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:62%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">Cryptography (AES / RSA / ECC)</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:56%"></div></div>
+            </div>
+            <div class="skill-item">
+              <span class="skill-name">PHP / MySQL</span>
+              <div class="skill-bar"><div class="skill-fill" style="--w:55%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="skill-domain">
+          <div class="skill-domain-header">
+            <span class="domain-icon">🛠️</span>
+            <h3 class="mono">Tools &amp; Platforms</h3>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Kali Linux</span>
+            <span class="skill-tag">Metasploit</span>
+            <span class="skill-tag">Nmap</span>
+            <span class="skill-tag">Wireshark</span>
+            <span class="skill-tag">Burp Suite</span>
+            <span class="skill-tag">x32dbg</span>
+            <span class="skill-tag">YARA</span>
+            <span class="skill-tag">Ghidra</span>
+            <span class="skill-tag">Hydra</span>
+            <span class="skill-tag">LinPEAS</span>
+            <span class="skill-tag">CeWL</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">VirtualBox</span>
+            <span class="skill-tag">Git</span>
+            <span class="skill-tag">HTB</span>
+            <span class="skill-tag">TryHackMe</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">03</span>
+        <span class="label-line"></span>
+        <span class="mono">projects.sh</span>
+      </div>
+      <h2 class="section-title" data-reveal>Featured Work</h2>
+
+      <div class="featured-projects" data-reveal>
+
+        <div class="project-featured">
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">01</span>
+            <div class="proj-tags">
+              <span class="proj-tag">Python</span>
+              <span class="proj-tag">Encryption</span>
+              <span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">Cryptex — Rolling File Vault</h3>
+          <p class="proj-desc">AES-encrypted rolling file vault with a Tkinter GUI. Handles secure storage, crash recovery, and database integration. Built as a full academic project with ClickUp Gantt, testing infrastructure, and a Windows exe target.</p>
+          <div class="proj-links">
+            <a href="https://github.com/ShriHax-21/Cryptex-Rolling-file-vault" target="_blank" rel="noopener" class="proj-link">
+              View Code <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <span class="proj-date mono">January 2026</span>
+        </div>
+
+        <div class="project-featured">
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">02</span>
+            <div class="proj-tags">
+              <span class="proj-tag">Python</span>
+              <span class="proj-tag">Networking</span>
+              <span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">NetToss — Wireless File Transfer</h3>
+          <p class="proj-desc">Python-based tool for seamless file transfer over wireless networks. Designed for Linux environments with a clean CLI interface, supports both local and direct wifi transfers without third-party dependencies.</p>
+          <div class="proj-links">
+            <a href="https://github.com/ShriHax-21/NetToss-Wireless_File_Transfer" target="_blank" rel="noopener" class="proj-link">
+              View Code <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <span class="proj-date mono">December 2025</span>
+        </div>
+
+        <div class="project-featured">
+          <div class="project-featured-meta">
+            <span class="proj-num mono accent">03</span>
+            <div class="proj-tags">
+              <span class="proj-tag">Bash</span>
+              <span class="proj-tag">Linux</span>
+              <span class="proj-tag">Spoofing</span>
+              <span class="proj-tag accent-tag">Featured</span>
+            </div>
+          </div>
+          <h3 class="proj-title">X_Change — IP &amp; MAC Changer</h3>
+          <p class="proj-desc">Bash script to rotate IP and MAC addresses on Linux. Useful for anonymising network identity during labs. Clean CLI, handles interface detection, and resets on demand. OPSEC utility, built properly.</p>
+          <div class="proj-links">
+            <a href="https://github.com/ShriHax-21/X_Change" target="_blank" rel="noopener" class="proj-link">
+              View Code <i data-lucide="arrow-up-right"></i>
+            </a>
+          </div>
+          <span class="proj-date mono">June 2025</span>
+        </div>
+
+      </div>
+
+      <div class="projects-divider" data-reveal>
+        <span class="mono">all_projects</span>
+        <div class="divider-line"></div>
+      </div>
+
+      <div class="projects-grid" data-reveal>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🔒</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">C</span>
+              <span class="proj-tag sm">Crypto</span>
+            </div>
+          </div>
+          <h4 class="pc-title">Cryptography in C</h4>
+          <p class="pc-desc">Secure file encryption via cryptographic algorithms. Pure C implementation.</p>
+          <a href="https://github.com/ShriHax-21/cryptography" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2023</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🌐</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">Python</span>
+              <span class="proj-tag sm">Network</span>
+            </div>
+          </div>
+          <h4 class="pc-title">Port Scanner GUI</h4>
+          <p class="pc-desc">GUI-based network port scanner — offensive recon tool with Python.</p>
+          <a href="https://github.com/ShriHax-21/port_scanner_GUI" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🕷️</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">Python</span>
+              <span class="proj-tag sm">OSINT</span>
+            </div>
+          </div>
+          <h4 class="pc-title">Web Crawler GUI</h4>
+          <p class="pc-desc">Python GUI to crawl and map web targets. Offensive OSINT / recon tool.</p>
+          <a href="https://github.com/ShriHax-21/web_crawler_GUI" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Jan 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🔗</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">Python</span>
+              <span class="proj-tag sm">Tool</span>
+            </div>
+          </div>
+          <h4 class="pc-title">URL Defanger</h4>
+          <p class="pc-desc">Defangs malicious URLs for safe sharing in reports and threat intel.</p>
+          <a href="https://github.com/ShriHax-21/URL-Defanger" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">June 2025</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🐚</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">Bash</span>
+              <span class="proj-tag sm">Recon</span>
+            </div>
+          </div>
+          <h4 class="pc-title">NCPD</h4>
+          <p class="pc-desc">Bash recon suite: port scan, password crack, Python3 server, directory scan.</p>
+          <a href="https://github.com/ShriHax-21/NCPD" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Nov 2024</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🎓</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">PHP</span>
+              <span class="proj-tag sm">MySQL</span>
+            </div>
+          </div>
+          <h4 class="pc-title">Student Management System</h4>
+          <p class="pc-desc">Full-stack student data management system with PHP, MySQL, JS.</p>
+          <a href="https://github.com/ShriHax-21/Student-Management-System" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Feb 2024</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🐧</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">Bash</span>
+              <span class="proj-tag sm">Linux</span>
+            </div>
+          </div>
+          <h4 class="pc-title">Cryptography in Linux</h4>
+          <p class="pc-desc">Linux file encryption using advanced cryptographic bash techniques.</p>
+          <a href="https://github.com/ShriHax-21/cryptography-in-linux" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Jul 2023</span>
+        </div>
+
+        <div class="project-card">
+          <div class="pc-header">
+            <span class="pc-icon">🖼️</span>
+            <div class="pc-tags">
+              <span class="proj-tag sm">Bash</span>
+              <span class="proj-tag sm">Scripting</span>
+            </div>
+          </div>
+          <h4 class="pc-title">Image Downloader</h4>
+          <p class="pc-desc">Bash utility to bulk-download images from the web with filtering.</p>
+          <a href="https://github.com/ShriHax-21/Image_downloader" target="_blank" rel="noopener" class="pc-link">View →</a>
+          <span class="pc-date mono">Nov 2024</span>
+        </div>
+
+      </div>
+
+      <div class="projects-cta" data-reveal>
+        <a href="https://github.com/ShriHax-21" target="_blank" rel="noopener" class="btn-secondary">
+          View all 17 repos on GitHub
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LABS -->
+  <section id="labs">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">04</span>
+        <span class="label-line"></span>
+        <span class="mono">lab_engagements.log</span>
+      </div>
+      <h2 class="section-title" data-reveal>Labs &amp; Engagements</h2>
+      <p class="section-sub" data-reveal>Real-world simulations mapped to MITRE ATT&amp;CK. Documented academic lab engagements — not production targets.</p>
+
+      <div class="labs-table-wrap" data-reveal>
+        <table class="labs-table">
+          <thead>
+            <tr>
+              <th class="mono">Machine / Target</th>
+              <th class="mono">Platform</th>
+              <th class="mono">CVE / Technique</th>
+              <th class="mono">Tools</th>
+              <th class="mono">Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Alert</strong> <span class="mono dim">10.10.11.44</span></td>
+              <td>HackTheBox</td>
+              <td><span class="cve-tag">XSS → RCE</span></td>
+              <td class="mono dim">Nmap, Burp, LinPEAS</td>
+              <td><span class="status-badge owned">Owned ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>Lampiao</strong></td>
+              <td>VulnHub</td>
+              <td>
+                <span class="cve-tag">CVE-2018-7600</span>
+                <span class="cve-tag">CVE-2016-5195</span>
+              </td>
+              <td class="mono dim">Nmap, Metasploit, Hydra, CeWL, DirtyCow</td>
+              <td><span class="status-badge owned">Owned ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>Emotet Epoch 2</strong></td>
+              <td>Malware Lab</td>
+              <td><span class="cve-tag">Dynamic Analysis</span></td>
+              <td class="mono dim">x32dbg, YARA, REMnux</td>
+              <td><span class="status-badge analyzed">Analyzed ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>RAT / Infostealer</strong></td>
+              <td>Malware Lab</td>
+              <td><span class="cve-tag">Static + Dynamic</span></td>
+              <td class="mono dim">YARA (8 rules), PEiD</td>
+              <td><span class="status-badge analyzed">Analyzed ✓</span></td>
+            </tr>
+            <tr>
+              <td><strong>SEA</strong></td>
+              <td>HackTheBox</td>
+              <td><span class="cve-tag">CVE-2023-41425</span></td>
+              <td class="mono dim">Nmap, Hydra, SQL, log-filtration</td>
+              <td><span class="status-badge owned">Owned ✓</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="thm-badge-wrap" data-reveal>
+        <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=2088043" style="border:none;" scrolling="no" loading="lazy"></iframe>
+      </div>
+
+      <div class="labs-platforms" data-reveal>
+        <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" rel="noopener" class="platform-card">
+          <img src="https://shrijesh.com.np/image/thm.png" alt="TryHackMe" width="32" height="32" style="border-radius:6px;" />
+          <div>
+            <p class="platform-name">TryHackMe</p>
+            <p class="platform-sub mono">Shr1H4x</p>
+          </div>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+        <a href="https://app.hackthebox.com/users/2106835" target="_blank" rel="noopener" class="platform-card">
+          <div class="htb-icon">HTB</div>
+          <div>
+            <p class="platform-name">HackTheBox</p>
+            <p class="platform-sub mono">ShriHax</p>
+          </div>
+          <i data-lucide="arrow-up-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label" data-reveal>
+        <span class="mono accent">05</span>
+        <span class="label-line"></span>
+        <span class="mono">contact.sh</span>
+      </div>
+      <h2 class="section-title" data-reveal>Let's Connect</h2>
+      <p class="section-sub" data-reveal>Open to internships, security collaborations, and interesting projects. Drop a message.</p>
+
+      <div class="contact-grid" data-reveal>
+        <div class="contact-links">
+
+          <a href="mailto:shrijesh@proton.me" class="contact-card">
+            <div class="contact-icon"><i data-lucide="mail"></i></div>
+            <div>
+              <p class="contact-label mono">Email</p>
+              <p class="contact-val">shrijesh@proton.me</p>
+            </div>
+          </a>
+
+          <a href="https://linkedin.com/in/shrijesh-ethical-hacker" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i data-lucide="linkedin"></i></div>
+            <div>
+              <p class="contact-label mono">LinkedIn</p>
+              <p class="contact-val">linkedin.com/in/shrijesh-ethical-hacker</p>
+            </div>
+          </a>
+
+          <a href="https://github.com/ShriHax-21" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i data-lucide="github"></i></div>
+            <div>
+              <p class="contact-label mono">GitHub</p>
+              <p class="contact-val">github.com/ShriHax-21</p>
+            </div>
+          </a>
+
+          <a href="https://wa.me/+9779704456926" target="_blank" rel="noopener" class="contact-card">
+            <div class="contact-icon"><i data-lucide="message-circle"></i></div>
+            <div>
+              <p class="contact-label mono">WhatsApp</p>
+              <p class="contact-val">+977 970•••••26</p>
+            </div>
+          </a>
+
+        </div>
+
+        <div class="contact-terminal">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <div class="ct-body">
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">ping shrijesh.com.np</span></p>
+            <p class="t-out">PING shrijesh.com.np: 56 data bytes</p>
+            <p class="t-out">64 bytes from shrijesh.com.np: icmp_seq=0 ttl=64 time=<span class="accent">2.1 ms</span></p>
+            <p class="t-out">&nbsp;</p>
+            <p class="t-line"><span class="t-prompt">shri@kali</span><span class="t-sep">:</span><span class="t-path">~</span><span class="t-sep">$</span> <span class="t-cmd">cat status.txt</span></p>
+            <p class="t-out"><span class="accent">✓</span> Open to internships</p>
+            <p class="t-out"><span class="accent">✓</span> Open to security collabs</p>
+            <p class="t-out"><span class="accent">✓</span> Based in Kathmandu, Nepal</p>
+            <p class="t-out"><span class="accent">✓</span> Response time: &lt; 24h</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">SHR<span class="accent">I</span>HAX</div>
+      <p class="footer-tagline mono">Securing digital landscapes — ethically.</p>
+      <div class="footer-links">
+        <a href="https://github.com/ShriHax-21" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://linkedin.com/in/shrijesh-ethical-hacker" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://tryhackme.com/p/Shr1H4x" target="_blank" rel="noopener">TryHackMe</a>
+        <a href="mailto:shrijesh@proton.me">Email</a>
+      </div>
+      <p class="footer-copy mono">© 2026 Shrijesh Pokharel. Built with intention.</p>
+    </div>
+  </footer>
+
+  <!-- Lucide Icons — loaded BEFORE script.js so lucide is defined -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

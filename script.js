@@ -1,632 +1,260 @@
-/**
- * Cybersecurity-Themed Portfolio Website - Main JavaScript
- * Author: Shrijesh Pokharel
- * Description: Advanced interactive elements for a hacker-style portfolio website
- */
+/* ============================================
+   SHRIJESH POKHAREL — PORTFOLIO
+   script.js
+   ============================================ */
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Start with loading animation
-    initLoadingScreen();
+'use strict';
 
-    // Initialize Matrix background effect
-    setupMatrixEffect();
+/* ── LUCIDE ICONS ────────────────────────── */
+if (typeof lucide !== 'undefined') {
+  lucide.createIcons();
+}
 
-    // Initialize all other functions once loading is complete
-    setTimeout(function() {
-        // Initialize AOS animations
-        AOS.init({
-            duration: 800,
-            once: false,
-            mirror: true,
-            offset: 100
-        });
+/* ── CUSTOM CURSOR ───────────────────────── */
+const cursor    = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
 
-        // Navigation menu toggle for mobile
-        setupNavigation();
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
 
-        // Typewriter effect for job title
-        typewriterEffect(
-            document.querySelector('.typewriter'),
-            ["Ethical Hacker & Cybersecurity Professional", "Network Security Specialist", "Digital Forensic Analyst", "Penetration Tester"],
-            100,
-            1500
-        );
-
-        // Skills tab switching
-        setupSkillTabs();
-
-        // Project filtering
-        setupProjectFilters();
-
-        // Contact form validation
-        setupContactForm();
-
-        // Back to top button
-        setupBackToTopButton();
-
-        // Counter animation for stats
-        setupCounters();
-
-        // Dynamic event listeners for interactive elements
-        setupInteractiveElements();
-
-        // Highlight active navigation links on scroll
-        highlightNavOnScroll();
-    },100); // Wait for loading screen
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  cursorDot.style.left = mouseX + 'px';
+  cursorDot.style.top  = mouseY + 'px';
 });
 
-/**
- * Initialize the loading screen animation
- */
-function initLoadingScreen() {
-    const loadingScreen = document.querySelector('.loading-screen');
-    const progressBar = document.querySelector('.progress');
-    const percentText = document.querySelector('.percent');
-    const statusText = document.querySelector('.status');
-
-    const loadingTexts = [
-        "Loading security protocols...",
-        "Establishing secure connection...",
-        "Encrypting communication channels...",
-        "Initializing firewalls...",
-        "Running vulnerability scans...",
-        "Configuring stealth mode...",
-        "Access granted..."
-    ];
-
-    let progress = 0;
-    const interval = setInterval(() => {
-        progress += Math.random() * 3;
-        if (progress >= 100) {
-            progress = 100;
-            clearInterval(interval);
-
-            setTimeout(() => {
-                statusText.textContent = "Access granted!";
-                setTimeout(() => {
-                    loadingScreen.classList.add('hidden');
-                    document.body.classList.add('loaded');
-                }, 5);
-            }, 5);
-        }
-
-        // Generate "hacker-like" random characters occasionally
-        if (Math.random() > 0.5) {
-            const hackerChars = "!@#$%^&*()_+-={}[]|\\:;\"'<>,.?/";
-            statusText.textContent = loadingTexts[Math.floor(progress / 100 * loadingTexts.length)] +
-                " " + hackerChars.charAt(Math.floor(Math.random() * hackerChars.length));
-        } else {
-            statusText.textContent = loadingTexts[Math.floor(progress / 100 * loadingTexts.length)];
-        }
-
-        progressBar.style.width = `${progress}%`;
-        percentText.textContent = `${Math.floor(progress)}%`;
-    }, 10);
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.12;
+  cursorY += (mouseY - cursorY) * 0.12;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top  = cursorY + 'px';
+  requestAnimationFrame(animateCursor);
 }
+animateCursor();
 
-/**
- * Setup Matrix rain effect in the background
- */
-function setupMatrixEffect() {
-    const canvas = document.getElementById('matrix-canvas');
-    const ctx = canvas.getContext('2d');
+// Hover effect on interactive elements
+const hoverTargets = document.querySelectorAll('a, button, .skill-tag, .project-card, .project-featured, .platform-card, .contact-card');
+hoverTargets.forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+});
 
-    // Set canvas size to window size
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
 
-    // Characters used in the Matrix rain
-    const chars = "01アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン";
-    const charArray = chars.split('');
+/* ── NAVBAR ──────────────────────────────── */
+const nav       = document.getElementById('nav');
+const hamburger = document.getElementById('hamburger');
+const mobileMenu= document.getElementById('mobileMenu');
 
-    const fontSize = 14;
-    const columns = canvas.width / fontSize;
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 30);
+}, { passive: true });
 
-    // Array for each character's y position
-    const drops = [];
-    for (let i = 0; i < columns; i++) {
-        drops[i] = Math.random() * -100;
-    }
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
 
-    // Drawing function for the Matrix rain
-    function drawMatrix() {
-        // Semi-transparent black to create trail effect
-        ctx.fillStyle = 'rgba(10, 14, 23, 0.05)';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+  });
+});
 
-        // Green text color
-        ctx.fillStyle = '#00ff8c';
-        ctx.font = `${fontSize}px monospace`;
 
-        // Loop over all drops
-        for (let i = 0; i < drops.length; i++) {
-            // Pick a random character
-            const text = charArray[Math.floor(Math.random() * charArray.length)];
+/* ── ACTIVE NAV LINK ─────────────────────── */
+const sections   = document.querySelectorAll('section[id]');
+const navLinks   = document.querySelectorAll('[data-nav]');
 
-            // Calculate x, y position
-            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-            // Reset position when characters go off screen + random factor to make it look more natural
-            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                drops[i] = 0;
-            }
-
-            // Move drops down
-            drops[i]++;
-        }
-    }
-
-    // Update canvas size on window resize
-    window.addEventListener('resize', function() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    });
-
-    // Start the animation loop
-    setInterval(drawMatrix, 30);
-}
-
-/**
- * Navigation setup for both desktop and mobile
- */
-function setupNavigation() {
-    const navToggle = document.getElementById('nav-toggle');
-    const navMenu = document.getElementById('nav-menu');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    // Toggle mobile menu
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('show');
-        navToggle.setAttribute('aria-expanded',
-            navToggle.getAttribute('aria-expanded') === 'true' ? 'false' : 'true'
+const sectionObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle(
+          'active',
+          link.getAttribute('href') === '#' + entry.target.id
         );
-
-        // Add glitch effect when toggling
-        if (navMenu.classList.contains('show')) {
-            applyGlitchEffect(navMenu);
-        }
-    });
-
-    // Close menu when a link is clicked
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            navMenu.classList.remove('show');
-            navToggle.setAttribute('aria-expanded', 'false');
-
-            // Remove active class from all links
-            navLinks.forEach(navLink => {
-                navLink.classList.remove('active');
-            });
-
-            // Add active class to the clicked link
-            link.classList.add('active');
-        });
-    });
-
-}
-
-/**
- * Typewriter effect for text elements
- */
-function typewriterEffect(element, texts, typingSpeed, pauseTime) {
-    if (!element) return;
-
-    let textIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingPaused = false;
-
-    function type() {
-        const currentText = texts[textIndex];
-
-        if (isDeleting) {
-            // Deleting text
-            element.textContent = currentText.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50; // Faster when deleting
-        } else {
-            // Typing text
-            element.textContent = currentText.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100; // Slower when typing
-        }
-
-        // Add blinking cursor at the end
-        if (!isDeleting) {
-            element.textContent = element.textContent.replace('|', '');
-        }
-
-        // Determine next action
-        if (!isDeleting && charIndex === currentText.length) {
-            // Finished typing current text
-            typingPaused = true;
-            setTimeout(() => {
-                typingPaused = false;
-                isDeleting = true;
-                type();
-            }, pauseTime);
-            return;
-        } else if (isDeleting && charIndex === 0) {
-            // Finished deleting current text
-            isDeleting = false;
-            textIndex = (textIndex + 1) % texts.length;
-        }
-
-        // Continue typing if not paused
-        if (!typingPaused) {
-            setTimeout(type, typingSpeed);
-        }
+      });
     }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
 
-    // Start the typewriter effect
-    type();
-}
+sections.forEach(s => sectionObserver.observe(s));
 
-/**
- * Apply glitch effect to an element
- */
-function applyGlitchEffect(element) {
-    if (!element) return;
 
-    element.classList.add('glitch-active');
-
-    setTimeout(() => {
-        element.classList.remove('glitch-active');
-    }, 500);
-}
-
-/**
- * Skills tab switching functionality
- */
-function setupSkillTabs() {
-    const tabButtons = document.querySelectorAll('.tab-button');
-    const tabContents = document.querySelectorAll('.tab-content');
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const tabId = button.getAttribute('data-tab');
-
-            // Update active button
-            tabButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
-
-            // Show selected tab content with fade effect
-            tabContents.forEach(content => {
-                content.classList.remove('active');
-            });
-
-            if (tabId === 'all') {
-                // Show all skill sections
-                tabContents.forEach(content => content.classList.add('active'));
-                const skillsContent = document.querySelector('.skills-content');
-                applyGlitchEffect(skillsContent);
-            } else {
-                const activeTab = document.getElementById(tabId);
-                if (activeTab) {
-                    activeTab.classList.add('active');
-                    // Add glitch effect when changing tabs
-                    applyGlitchEffect(activeTab);
-                }
-            }
-        });
-    });
-}
-
-/**
- * Project filtering functionality
- */
-function setupProjectFilters() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const projectCards = document.querySelectorAll('.project-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const filterValue = button.getAttribute('data-filter');
-
-            // Update active button
-            filterButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            button.classList.add('active');
-
-            // Filter projects with animation
-            projectCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category').includes(filterValue)) {
-                    card.style.display = 'block';
-
-                    // Add animation
-                    setTimeout(() => {
-                        card.style.opacity = '1';
-                        card.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    card.style.opacity = '0';
-                    card.style.transform = 'translateY(20px)';
-
-                    // Hide after animation
-                    setTimeout(() => {
-                        card.style.display = 'none';
-                    }, 300);
-                }
-            });
-        });
-    });
-}
-
-/**
- * Contact form validation and submission
- */
-function setupContactForm() {
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            // Basic form validation
-            const name = document.getElementById('name').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const subject = document.getElementById('subject').value.trim();
-            const message = document.getElementById('message').value.trim();
-
-            if (!name || !email || !subject || !message) {
-                showFormMessage('Please fill in all fields.', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showFormMessage('Please enter a valid email address.', 'error');
-                return;
-            }
-
-            // Simulate form submission with terminal-like response
-            const submitButton = contactForm.querySelector('button[type="submit"]');
-            const originalText = submitButton.textContent;
-
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-
-            // Show terminal-like response animation
-            showHackerResponse(name, email, () => {
-                // Success callback
-                submitButton.disabled = false;
-                submitButton.textContent = originalText;
-                contactForm.reset();
-            });
-        });
+/* ── REVEAL ON SCROLL ────────────────────── */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const siblings = [...entry.target.parentElement.querySelectorAll('[data-reveal]')];
+      const idx = siblings.indexOf(entry.target);
+      entry.target.style.transitionDelay = (idx * 0.08) + 's';
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
-    function isValidEmail(email) {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
+document.querySelectorAll('[data-reveal]').forEach(el => revealObserver.observe(el));
+
+
+/* ── SKILL BAR ANIMATION ─────────────────── */
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      skillObserver.unobserve(entry.target);
     }
+  });
+}, { threshold: 0.2 });
 
-    function showFormMessage(message, type) {
-        // Remove any existing messages
-        const existingMessage = document.querySelector('.form-message');
-        if (existingMessage) {
-            existingMessage.remove();
-        }
+document.querySelectorAll('.skill-domain').forEach(d => skillObserver.observe(d));
 
-        // Create message element
-        const messageElement = document.createElement('div');
-        messageElement.className = `form-message ${type}`;
-        messageElement.style.padding = '10px';
-        messageElement.style.marginTop = '15px';
-        messageElement.style.borderRadius = '5px';
-        messageElement.style.fontFamily = 'var(--font-mono)';
 
-        if (type === 'error') {
-            messageElement.style.backgroundColor = 'rgba(255, 0, 0, 0.1)';
-            messageElement.style.border = '1px solid #ff3e3e';
-            messageElement.style.color = '#ff3e3e';
-            messageElement.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${message}`;
-        } else {
-            messageElement.style.backgroundColor = 'rgba(0, 255, 140, 0.1)';
-            messageElement.style.border = '1px solid #00ff8c';
-            messageElement.style.color = '#00ff8c';
-            messageElement.innerHTML = `<i class="fas fa-check-circle"></i> ${message}`;
-        }
+/* ── TYPEWRITER ROLE ─────────────────────── */
+const roles = [
+  'Ethical Hacker',
+  'Security Researcher',
+  'Malware Analyst',
+  'Tool Builder',
+  'Penetration Tester',
+];
 
-        // Append message
-        contactForm.appendChild(messageElement);
+const roleEl = document.getElementById('roleText');
+let roleIdx  = 0;
+let charIdx  = 0;
+let deleting = false;
 
-        // Auto-hide message after 5 seconds
-        setTimeout(() => {
-            messageElement.style.opacity = '0';
-            setTimeout(() => {
-                messageElement.remove();
-            }, 300);
-        }, 5000);
+function typeRole() {
+  if (!roleEl) return;
+  const current = roles[roleIdx];
+
+  if (!deleting) {
+    charIdx++;
+    roleEl.textContent = current.slice(0, charIdx);
+    if (charIdx === current.length) {
+      setTimeout(() => { deleting = true; typeRole(); }, 2000);
+      return;
     }
-
-    function showHackerResponse(name, email, callback) {
-        // Create a terminal-like response window
-        const responseTerminal = document.createElement('div');
-        responseTerminal.className = 'terminal-response';
-        responseTerminal.style.position = 'fixed';
-        responseTerminal.style.top = '50%';
-        responseTerminal.style.left = '50%';
-        responseTerminal.style.transform = 'translate(-50%, -50%)';
-        responseTerminal.style.width = '80%';
-        responseTerminal.style.maxWidth = '500px';
-        responseTerminal.style.backgroundColor = 'var(--terminal-bg)';
-        responseTerminal.style.border = '1px solid var(--accent-primary)';
-        responseTerminal.style.boxShadow = '0 0 20px rgba(0, 255, 140, 0.5)';
-        responseTerminal.style.zIndex = '9999';
-        responseTerminal.style.borderRadius = 'var(--radius-md)';
-        responseTerminal.style.padding = '20px';
-        responseTerminal.style.fontFamily = 'var(--font-mono)';
-        responseTerminal.style.color = 'var(--accent-primary)';
-        responseTerminal.style.opacity = '0';
-        responseTerminal.style.transition = 'opacity 0.3s ease';
-
-        document.body.appendChild(responseTerminal);
-
-        // Add content to terminal
-        setTimeout(() => {
-            responseTerminal.style.opacity = '1';
-
-            const lines = [
-                `> Initializing message sending protocol...`,
-                `> Recipient: Shrijesh Pokharel`,
-                `> From: ${name} <${email}>`,
-                `> Encrypting message content...`,
-                `> Establishing secure connection...`,
-                `> Verifying integrity...`,
-                `> Message successfully sent!`,
-                `> Connection closed.`,
-                `\n> Thank you for your message. I'll get back to you soon!`
-            ];
-
-            let lineIndex = 0;
-            let charIndex = 0;
-
-            function typeLine() {
-                if (lineIndex < lines.length) {
-                    const currentLine = lines[lineIndex];
-
-                    if (charIndex < currentLine.length) {
-                        responseTerminal.innerHTML += currentLine.charAt(charIndex);
-                        charIndex++;
-                        setTimeout(typeLine, 20);
-                    } else {
-                        responseTerminal.innerHTML += '<br>';
-                        lineIndex++;
-                        charIndex = 0;
-                        setTimeout(typeLine, 300);
-                    }
-                } else {
-                    // All lines typed, show close button
-                    const closeButton = document.createElement('button');
-                    closeButton.textContent = '[ Close ]';
-                    closeButton.style.backgroundColor = 'transparent';
-                    closeButton.style.border = '1px solid var(--accent-primary)';
-                    closeButton.style.color = 'var(--accent-primary)';
-                    closeButton.style.padding = '8px 16px';
-                    closeButton.style.marginTop = '20px';
-                    closeButton.style.fontFamily = 'var(--font-mono)';
-                    closeButton.style.cursor = 'pointer';
-                    closeButton.style.borderRadius = 'var(--radius-sm)';
-
-                    closeButton.addEventListener('mouseenter', () => {
-                        closeButton.style.backgroundColor = 'var(--accent-primary)';
-                        closeButton.style.color = 'var(--terminal-bg)';
-                    });
-
-                    closeButton.addEventListener('mouseleave', () => {
-                        closeButton.style.backgroundColor = 'transparent';
-                        closeButton.style.color = 'var(--accent-primary)';
-                    });
-
-                    closeButton.addEventListener('click', () => {
-                        responseTerminal.style.opacity = '0';
-                        setTimeout(() => {
-                            responseTerminal.remove();
-                            if (callback) callback();
-                        }, 300);
-                    });
-
-                    responseTerminal.appendChild(closeButton);
-
-                    // Show success message in the form
-                    showFormMessage('Message sent successfully!', 'success');
-                }
-            }
-
-            typeLine();
-        }, 300);
+  } else {
+    charIdx--;
+    roleEl.textContent = current.slice(0, charIdx);
+    if (charIdx === 0) {
+      deleting = false;
+      roleIdx = (roleIdx + 1) % roles.length;
     }
+  }
+
+  setTimeout(typeRole, deleting ? 50 : 90);
 }
 
-/**
- * Back to top button functionality
- */
-function setupBackToTopButton() {
-    const backToTop = document.querySelector('.back-to-top');
+typeRole();
 
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTop.classList.add('show');
-        } else {
-            backToTop.classList.remove('show');
-        }
-    });
-}
 
-/**
- * Counter animation for stats
- */
-function setupCounters() {
-    const counterElements = document.querySelectorAll('.counter');
+/* ── SMOOTH ANCHOR SCROLL ────────────────── */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', (e) => {
+    const target = document.querySelector(anchor.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const top = target.getBoundingClientRect().top + window.scrollY - 64;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+});
 
-    function animateCounter(el) {
-        const target = parseInt(el.textContent.replace(/\D/g, ''), 10);
-        let count = 0;
-        const duration = 2000; // 2 seconds
-        const startTime = performance.now();
 
-        function updateCount(currentTime) {
-            const elapsedTime = currentTime - startTime;
-            const progress = Math.min(elapsedTime / duration, 1);
+/* ── GLITCH LOGO EFFECT ──────────────────── */
+const glitchStyle = document.createElement('style');
+glitchStyle.textContent = `
+  @keyframes glitch-main {
+    0%,100% { transform: translate(0); clip-path: none; }
+    10%  { transform: translate(-2px, 1px) skewX(-2deg); clip-path: inset(10% 0 80% 0); }
+    20%  { transform: translate(2px, -1px) skewX(2deg);  clip-path: inset(60% 0 20% 0); }
+    30%  { transform: translate(-1px, 2px);               clip-path: inset(30% 0 50% 0); }
+    40%  { transform: translate(1px, -2px) skewX(-1deg);  clip-path: inset(80% 0 5%  0); }
+    50%  { transform: translate(0);                       clip-path: none; }
+    60%  { transform: translate(-3px, 0) skewX(3deg);     clip-path: inset(45% 0 40% 0); }
+    70%  { transform: translate(3px, 1px);                clip-path: inset(5%  0 70% 0); }
+    80%  { transform: translate(-1px,-1px) skewX(-2deg);  clip-path: inset(70% 0 15% 0); }
+    90%  { transform: translate(0);                       clip-path: none; }
+  }
+  @keyframes glitch-red {
+    0%,100% { transform: translate(0); opacity: 0; }
+    15%  { transform: translate(-3px, 1px); opacity: 0.7; clip-path: inset(20% 0 60% 0); }
+    35%  { transform: translate(3px,-1px);  opacity: 0.5; clip-path: inset(55% 0 25% 0); }
+    55%  { transform: translate(-2px, 2px); opacity: 0.6; clip-path: inset(75% 0 10% 0); }
+    75%  { transform: translate(2px,-2px);  opacity: 0.4; clip-path: inset(10% 0 75% 0); }
+    90%  { opacity: 0; }
+  }
+  @keyframes glitch-cyan {
+    0%,100% { transform: translate(0); opacity: 0; }
+    20%  { transform: translate(3px,-1px);  opacity: 0.6; clip-path: inset(50% 0 30% 0); }
+    40%  { transform: translate(-3px, 1px); opacity: 0.5; clip-path: inset(15% 0 65% 0); }
+    60%  { transform: translate(2px, 2px);  opacity: 0.7; clip-path: inset(80% 0 5%  0); }
+    80%  { transform: translate(-2px,-2px); opacity: 0.4; clip-path: inset(35% 0 45% 0); }
+    95%  { opacity: 0; }
+  }
+  .nav-logo { position: relative; }
+  .nav-logo.glitching          { animation: glitch-main 0.5s steps(1) 1; }
+  .nav-logo.glitching::before  { content: attr(data-text); position: absolute; left: 0; top: 0; color: #ff0055; animation: glitch-red  0.5s steps(1) 1; pointer-events: none; }
+  .nav-logo.glitching::after   { content: attr(data-text); position: absolute; left: 0; top: 0; color: #00ffff;  animation: glitch-cyan 0.5s steps(1) 1; pointer-events: none; }
+`;
+document.head.appendChild(glitchStyle);
 
-            // Easing function for smoother animation
-            const easeOutQuad = progress * (2 - progress);
+const logo = document.querySelector('.nav-logo');
+if (logo) {
+  const triggerGlitch = () => {
+    logo.classList.add('glitching');
+    logo.addEventListener('animationend', () => {
+      logo.classList.remove('glitching');
+    }, { once: true });
+  };
 
-            count = Math.floor(easeOutQuad * target);
-            el.textContent = el.textContent.includes('+') ? `${count}+` : count;
-
-            if (progress < 1) {
-                requestAnimationFrame(updateCount);
-            }
-        }
-
-        requestAnimationFrame(updateCount);
-    }
-
-    // Use Intersection Observer to start animation when elements come into view
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateCounter(entry.target);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.5 });
-
-    counterElements.forEach(counter => {
-        observer.observe(counter);
-    });
+  // Fire once on load after short delay, then every 5 seconds
+  setTimeout(() => {
+    triggerGlitch();
+    setInterval(triggerGlitch, 5000);
+  }, 1500);
 }
 
 
-/**
- * Highlight active navigation link based on scroll position
- */
-function highlightNavOnScroll() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
+/* ── LABS TABLE ROW HIGHLIGHT ────────────── */
+document.querySelectorAll('.labs-table tbody tr').forEach(row => {
+  row.addEventListener('mouseenter', () => {
+    row.style.background = 'rgba(0,255,135,0.03)';
+  });
+  row.addEventListener('mouseleave', () => {
+    row.style.background = '';
+  });
+});
 
-    window.addEventListener('scroll', () => {
-        let current = '';
-        const scrollPos = window.pageYOffset;
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
+/* ── PARALLAX HERO GLOW ──────────────────── */
+document.addEventListener('mousemove', (e) => {
+  const glow = document.querySelector('.hero-img-glow');
+  if (!glow) return;
+  const rect = glow.closest('.hero-img-wrap').getBoundingClientRect();
+  const cx   = rect.left + rect.width / 2;
+  const cy   = rect.top  + rect.height / 2;
+  const dx   = (e.clientX - cx) / window.innerWidth  * 20;
+  const dy   = (e.clientY - cy) / window.innerHeight * 20;
+  glow.style.transform = `translate(${dx}px, ${dy}px)`;
+}, { passive: true });
 
-            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
-                current = section.getAttribute('id');
-            }
-        });
 
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
-        });
-    });
+/* ── CURRENT YEAR IN FOOTER ──────────────── */
+const copyEl = document.querySelector('.footer-copy');
+if (copyEl) {
+  copyEl.textContent = copyEl.textContent.replace('2026', new Date().getFullYear());
+}
+
+
+/* ── REDUCED MOTION RESPECT ──────────────── */
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.querySelectorAll('[data-reveal]').forEach(el => {
+    el.style.opacity = '1';
+    el.style.transform = 'none';
+    el.classList.add('visible');
+  });
 }
